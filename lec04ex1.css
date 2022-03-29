@@ -1,0 +1,13 @@
+/*#intro{font-style:italic;}*/
+.term {font-weight:bold; text-decoration:underline;}
+.red1 {color:rgb(44, 184, 165); font-style:italic;}
+strong.red1 {font-size:12pt}
+#next {color:rgb(56, 150, 37); text-align:center;}
+a:link {color:blue;}
+a:visit{color:green;}
+h3 {color:red; background-color:#4550eb}
+h3 after{content: "(㉿sblim)"; font-size:10pt; background-color:yellow;}
+#first {background-image : url(flower.png); background-repeat:repeat-x;}
+#second {background-image : url(flower.png);}
+#third {background-image : url(flower.png); background-repeat:no-repeat;
+background-position:center bottom;}
