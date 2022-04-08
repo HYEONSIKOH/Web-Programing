@@ -7,18 +7,52 @@
     <meta charset = 'utf-8'>
     <style type = "text/css">
         
-        #title {font-family: 'Noto Sans KR', sans-serif; font-size:45pt; letter-spacing:-4pt; text-shadow:2px 2px 2px #A5A5A5;}
+        #title {
+            font-family: 'Noto Sans KR', sans-serif; 
+            font-size:45pt; 
+            letter-spacing:-4pt; 
+            text-shadow:2px 2px 2px #A5A5A5;
+        }
         #poster {border-spacing:20px;}
-        #title2 {font-size:25pt; height:60; width:85%;}
-        tr, th{border:none;} td{border:none; font-weight:600; font-size:18pt;}
-        .back{background: url("flower.png"); background-position: 195% 115%; background-repeat:no-repeat;
-               background-size: 640px;}
+        .title2 {
+            font-size:25pt; 
+            height:60px; 
+            width :700px;
+        }
+        tr, th{
+            border:none;
+        } 
+        td{
+            border:none; 
+            font-weight:600; 
+            font-size:18pt;
+        }
+        body{
+            position : relative; 
+            display : block; 
+            width:937.4px;
+            height:1567.2px; 
+            overflow: auto;
+        }
+        .flopos{
+            z-index: 50;
+            position: absolute;
+            bottom: -120px;
+            right: 0;
+            width: 390px;
+            height: 500px;
+            background: url(flower.png) no-repeat 0 0;
+            background-size: cover;
+            opacity: 0.4;
+        } 
         
     </style>
     </head>
     
     <body>
-        <table border = "10" bordercolor="#DDECCA" id = "poster" class = "back">
+        
+        <table border = "10" bordercolor="#DDECCA" id = "poster" class = "back" overflow = "hidden";>
+            <div class = "flopos">
             <tr border = none id = title>
                 <th id = k colspan = "2"><span style = "color:#F596C2">Elastic</span> 
                     <span style = "color:#FEEBB6">데이터 분석가</span> 및 
@@ -62,7 +96,7 @@
             <td><img src = "flower.png" width="80" height="80" alt="flower.png"></td>
             <td><img src = "line.png"  width="650"alt="line.png"></td>
         </tr>
-        <tr id = title2 height = "60">
+        <tr class = "title2">
             <td></td>
             <td bgcolor="#FEEBB6"><center>Elastic 데이터 분석가 과정</center></td>
         </tr>
@@ -76,7 +110,7 @@
         </tr>
         <tr></tr>
         <tr></tr>
-        <tr id=title2>
+        <tr class= "title2">
             <td></td>
             <td bgcolor="#082A76"><span style = "color:#FFFFFF"><center>Elastic 엔지니어 과정</center></span></td>
         </tr>
@@ -106,10 +140,10 @@
         <tr></tr>
         <tr></tr>
         <tr>
-            <td colspan = "2"><center><img src = "logo_smusw.png" width="300" height="70" alt="logo_smusw.png"></center></td>
+            <td colspan = "2" class = "smu"><center><img src = "logo_smusw.png" width="300" height="70" alt="logo_smusw.png"></center></td>
         </tr>
-        </div>
-
+    </div>
     </table>
+    <a href="mid_201921010_2.html" title="두번째 파일">더 알아보기</a>
     </body>
 </html>
