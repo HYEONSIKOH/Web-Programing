@@ -11,8 +11,9 @@
         body{
             font-family: 'Nanum Gothic', sans-serif;
             font-size: 12pt;
-            overflow: auto;
-            text-overflow : clip;
+            width : 900px;
+            overflow: scroll;
+            
         }
         li.ti{
             font-family: 'Noto Sans KR', sans-serif;
@@ -33,15 +34,25 @@
         }
         tr, td{
             text-align: center;
+            border:black solid 1px;
+        }
+        th{
+            border:black solid 1px;
         }
         #books{
             border-collapse : collapse;
             border-spacing: 8px;
+            width : 800px; 
+            border:black solid 1px;
+            border-collapse: collapse;
         }
         li.no{
-            list-style:'※ ';
-            padding: 0; 
-            margin: 0; 
+            list-style: none;
+            margin : -10px; 
+            
+        }
+        #line{
+            text-decoration-line: underline;
         }
     </style>
     </head>
@@ -61,7 +72,7 @@
                 <br>
                 <br>
                 <ul>
-                    <li class="no">신청 시 구글 신청서로 제출한 이메일로 강의 링크 안내 예정</li>
+                    <li class="no">※ 신청 시 구글 신청서로 제출한 이메일로 강의 링크 안내 예정</li>
                 </ul>
                 <br>
                 <br>
@@ -89,11 +100,15 @@
                 
                 <ul>
                     <br>
-                    <span style = "color:#b80808"><li class = "no">세 가지 모두 필수 제출(재ㆍ휴학생만)</li></span>
                     <br>
-                    <ins><strong><li class = "no">제출처: simin99ks@smu.ac.kr</li></strong></ins>
+                    <span style = "color:#b80808"><li class = "no">※ 세 가지 모두 필수 제출(재ㆍ휴학생만)</li></span>
                     <br>
-                    <span style = "color:#0044ff"><u><li class = "no">제출 시 이메일 제목: Elastic 온라인 과정/캠퍼스/학과/이름</li></u></span>
+                    <br>
+                    <strong><li class = "no" id="line">※ 제출쳐: simin99ks@smu.ac.kr</li></strong>
+                    <br>
+                    <br>
+                    <span style = "color:#0011ff"><li class = "no" id = "line"><strong>※ 제출 시 이메일 제목: Elastic 온라인 과정/캠퍼스/학과/이름</strong></li></span>
+                    <br>
                     <br>
                 </ul>
 
@@ -103,11 +118,11 @@
                 <ol>
                     <li class="ti2">Elastic 엔지니어 과정</li>
                     <br>
-                    <table border = "1" id = "books">
+                    <table border = "0" id = "books" height = "170px">
                         <tr>
-                            <th>순번</th>
-                            <th>강의명</th>
-                            <th>내용</th>
+                            <th bgcolor ="#D9D9D9">순번</th>
+                            <th bgcolor ="#D9D9D9">강의명</th>
+                            <th bgcolor ="#D9D9D9">내용</th>
                         </tr>
                         <tr>
                             <td><center>1</center></td>
@@ -132,11 +147,11 @@
 
                     <li class="ti2">Elastic 데이터 분석가 과정</li>
                     <br>
-                    <table border = "1" id = "books">
+                    <table border = "0" id = "books" height = "540px">
                         <tr>
-                            <th>순번</th>
-                            <th>강의명</th>
-                            <th>내용</th>
+                            <th bgcolor ="#D9D9D9">순번</th>
+                            <th bgcolor ="#D9D9D9">강의명</th>
+                            <th bgcolor ="#D9D9D9">내용</th>
                         </tr>
                         <tr>
                             <td><center>1</center></td>
@@ -220,11 +235,11 @@
                         <br>
                     </ul>
                     <br>
-                    <table border = "1" id = "books">
+                    <table border = "0"  id = "books" height = "380px">
                         <tr>
-                            <th>순번</th>
-                            <th>내용</th>
-                            <th>강연자</th>
+                            <th bgcolor ="#D9D9D9";>순번</th>
+                            <th bgcolor ="#D9D9D9";>내용</th>
+                            <th bgcolor ="#D9D9D9";>강연자</th>
                         </tr>
                         <tr>
                             <td><center>1</center></td>
@@ -267,13 +282,13 @@
                     <br>
                     <ul>
                         <br>
-                        <li class = "no">오리엔테이션 영상은 엔지니어 과정 <strong><u>3주차에 업로드</u></strong></li>
+                        <li class = "no">※ 오리엔테이션 영상은 엔지니어 과정 <strong><u>3주차에 업로드</u></strong></li>
                         <br>
                         <br>
                     </ul>
                 </ol>
                 
             </ol>
-            <a href="mid_201921010_1.html" title="두번째 파일">돌아가기</a>
+            <a href="mid_201921010_1.html" title="돌아가기"><img src = "arrow2.png" width="40" height="40" alt="돌아가기"></a>
     </body>
 </html>

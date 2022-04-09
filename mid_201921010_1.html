@@ -11,7 +11,7 @@
             font-family: 'Noto Sans KR', sans-serif; 
             font-size:45pt; 
             letter-spacing:-4pt; 
-            text-shadow:2px 2px 2px #A5A5A5;
+            text-shadow:3px 3px 3px #A5A5A5;
         }
         #poster {border-spacing:20px;}
         .title2 {
@@ -27,38 +27,40 @@
             font-weight:600; 
             font-size:18pt;
         }
-        body{
+        body>div{
             position : relative; 
             display : block; 
-            width:937.4px;
-            height:1567.2px; 
-            overflow: auto;
+            width:937.4px; 
+            overflow: hidden;
         }
         .flopos{
             z-index: 50;
             position: absolute;
-            bottom: -120px;
+            bottom: -150px;
             right: 0;
-            width: 390px;
-            height: 500px;
+            width: 420px;
+            height: 580px;
             background: url(flower.png) no-repeat 0 0;
             background-size: cover;
             opacity: 0.4;
-        } 
+        }
+        a{
+            text-decoration-line: none;
+        }
+
+        
         
     </style>
     </head>
-    
     <body>
-        
-        <table border = "10" bordercolor="#DDECCA" id = "poster" class = "back" overflow = "hidden";>
-            <div class = "flopos">
+        <div>
+        <div class = "flopos" id = "arrow_pos"></div>
+        <table border = "10" bordercolor="#DDECCA" id = "poster" class = "back" overflow = "hidden" ;>
             <tr border = none id = title>
                 <th id = k colspan = "2"><span style = "color:#F596C2">Elastic</span> 
                     <span style = "color:#FEEBB6">데이터 분석가</span> 및 
                     <span style = "color:#B8E9FF">엔지니어 과정</span>
                     <br>온라인 교육생 모집</th>
-                
             </tr>
         
         <tr>
@@ -98,7 +100,7 @@
         </tr>
         <tr class = "title2">
             <td></td>
-            <td bgcolor="#FEEBB6"><center>Elastic 데이터 분석가 과정</center></td>
+            <td bgcolor="#FEEBB6"><a href="https://forms.gle/gc9PwHFcu3SAfVvRA"><span style = "color:#000000"><center>Elastic 데이터 분석가 과정</center></span></a></td>
         </tr>
         <tr>
             <td></td>
@@ -112,7 +114,7 @@
         <tr></tr>
         <tr class= "title2">
             <td></td>
-            <td bgcolor="#082A76"><span style = "color:#FFFFFF"><center>Elastic 엔지니어 과정</center></span></td>
+            <td class = "line" bgcolor="#082A76"><a href="https://forms.gle/gc9PwHFcu3SAfVvRA"><span style = "color:#FFFFFF"><center>Elastic 엔지니어 과정</center></span></a></td>
         </tr>
         <tr>
             <td></td>
@@ -128,9 +130,7 @@
         <tr></tr>
         <tr></tr>
         <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
+        
         <tr>
             <td></td>
             <td>문의: 02)-1234-5678,  simin99ks@smu.ac.kr</td>
@@ -139,11 +139,14 @@
         <tr></tr>
         <tr></tr>
         <tr></tr>
+        
         <tr>
-            <td colspan = "2" class = "smu"><center><img src = "logo_smusw.png" width="300" height="70" alt="logo_smusw.png"></center></td>
+            <td><a href="mid_201921010_2.html" title="더 알아보기"><img src = "arrow.png" width="70" height="70" alt="더 알아보기"></a></td>
+            <td colspan = "2" class = "smu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <img src = "logo_smusw.png" width="300" height="70" alt="logo_smusw.png"></td>
         </tr>
-    </div>
     </table>
-    <a href="mid_201921010_2.html" title="두번째 파일">더 알아보기</a>
+        </div>
+    
     </body>
 </html>
