@@ -44,7 +44,6 @@
             border-spacing: 8px;
             width : 800px; 
             border:black solid 1px;
-            border-collapse: collapse;
         }
         li.no{
             list-style: none;
@@ -53,6 +52,7 @@
         }
         #line{
             text-decoration-line: underline;
+            text-underline-position: under;
         }
     </style>
     </head>
@@ -101,10 +101,10 @@
                 <ul>
                     <br>
                     <br>
-                    <span style = "color:#b80808"><li class = "no">※ 세 가지 모두 필수 제출(재ㆍ휴학생만)</li></span>
+                    <strong><span style = "color:#ff0000"><li class = "no">※ 세 가지 모두 필수 제출(재ㆍ휴학생만)</li></span></strong>
                     <br>
                     <br>
-                    <strong><li class = "no" id="line">※ 제출쳐: simin99ks@smu.ac.kr</li></strong>
+                    <strong><li class = "no" id = "line">※ 제출처: simin99ks@smu.ac.kr</li></strong>
                     <br>
                     <br>
                     <span style = "color:#0011ff"><li class = "no" id = "line"><strong>※ 제출 시 이메일 제목: Elastic 온라인 과정/캠퍼스/학과/이름</strong></li></span>
@@ -160,7 +160,7 @@
                             <br>설명합니다.
                             </td>
                         </tr>
-                        <tr>
+                        <tr style = "height: 40px">
                             <td><center>2</center></td>
                             <td>Deplayment생성</td>
                             <td>Elastic Cloud ID생성 후, Deplayment생성 방법을 설명합니다.</td>
@@ -179,7 +179,7 @@
                             <br>뷰에 대해서 설명하고 데이터뷰 만드는 방법을 설명합니다.
                             </td>
                         </tr>
-                        <tr>
+                        <tr style = "height: 40px">
                             <td><center>5</center></td>
                             <td>Discover</td>
                             <td>Kibana Discover 기능에 대해 설명합니다.</td>
