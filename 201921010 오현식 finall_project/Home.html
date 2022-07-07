@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>상명 Data Wiki</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.5/xlsx.full.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="data.js" type="text/javascript"></script>
+    <script src="forum.js" type="text/javascript"></script>
+    <style type="text/css">
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+            list-style: none;
+            text-decoration: none;
+            border-collapse: collapse;
+            margin: 0px;
+            padding: 0px;
+            color: black;
+        }
+
+        body {
+            overflow: auto;
+            margin: 0px;
+            padding: 0px;
+            color: black;
+        }
+
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .main_banr{
+            justify-content: center;
+            display: flex;
+        }
+
+        .banr{
+            margin-bottom: 10px; 
+            position: relative;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            height: 70px;
+        }
+
+        .category:hover {
+            font-weight: bold;
+        }
+
+        .nav>li {
+            float: left;
+            margin-right: 18px;
+            margin-left: 18px;
+            line-height: 60px;
+            font-size: 20pt;
+        }
+
+        .container {
+            width: 1245px;
+            height: 450px;
+            position: relative;
+            background-color: antiquewhite;
+            overflow: hidden;
+        }
+
+        .wrapper {
+            /*     height:700px; */
+            /*background-color: lightgray;*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slider {
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .item {
+            width: 68%;
+            height: 450px;
+            background-image: url(image/main_vanr_01.jpg);
+            background-repeat: no-repeat;
+            font-size: 35px;
+            text-align: center;
+        }
+
+        .item:nth-child(2) {
+            background-image: url(image/main_vanr_02.jpg);
+        }
+
+        .item:nth-child(3) {
+            background-image: url(image/main_vanr_03.jpg);
+        }
+
+        .item:nth-child(4) {
+            background-image: url(image/main_vanr_04.jpg);
+        }
+
+        .item:nth-child(5) {
+            background-image: url(image/main_vanr_05.jpg);
+        }
+
+        .container ul {
+            -webkit-transition: all 0.25s cubic-bezier(1, .01, .32, 1);
+            -o-transition: all 0.25s cubic-bezier(1, .01, .32, 1);
+            transition: all 0.25s cubic-bezier(1, .01, .32, 1);
+        }
+
+        #footer {
+            clear: both;
+            width: 100%;
+            height: 115px;
+            padding-top: 20px;
+            padding-bottom: 10px;
+            background: #3c3c3c;
+            position: relative;
+            transform: translateY(-100%)
+                /* 자기 높이만큼 위로 올라옴 */
+        }
+
+        .inner {
+            clear: both;
+            position: relative;
+            margin: 0 auto;
+            width: 1180px;
+            padding: 0 10px;
+            box-sizing: content-box;
+        }
+
+        .layoutRight {
+            float: right;
+        }
+
+        #footer .copyright {
+            clear: both;
+            padding: 0;
+        }
+
+        #footer .link ul li.color a {
+            color: #f4c94a;
+        }
+
+        .layoutLeft {
+            float: left;
+        }
+
+        #footer .link ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        #footer .link ul li a {
+            color: #999;
+            font-size: 15px;
+        }
+
+        #footer .copyright .info {
+            display: block;
+            text-align: left;
+            margin-bottom: 12px;
+        }
+
+        #footer .copyright .info span.address {
+            width: 100%;
+            margin-right: 0;
+        }
+
+        #footer .copyright .info span.copy {
+            width: 100%;
+            margin-right: 0;
+            color: #999;
+            text-transform: uppercase;
+        }
+
+        #footer .copyright .info span {
+            display: inline-block;
+            margin-right: 20px;
+            color: #999;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .layoutRight {
+            float: right;
+        }
+
+        #footer .btnLink .btnLink01 {
+            position: relative;
+            float: left;
+        }
+
+        #footer .btnLink .btnLink01 button {
+            position: relative;
+            width: 200px;
+            height: 40px;
+            padding: 0 25px;
+            background: #232323;
+            color: #999;
+            font-size: 15px;
+            line-height: 1;
+            text-align: left;
+            border-radius: 5px;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        #footer .btnLink .btnLink01 ul {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: auto;
+            bottom: 0;
+            padding: 12px 22px;
+            background: #f4c94a;
+            border-radius: 5px;
+            box-sizing: border-box;
+            opacity: 0;
+            overflow: hidden;
+            visibility: hidden;
+            transition: all .2s ease;
+            z-index: 2;
+        }
+
+        #footer .btnLink .btnLink01 button:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 15px;
+            height: 10px;
+            top: 50%;
+            right: 25px;
+            margin-top: -5px;
+            background: url(image/ico_selectbox.png) no-repeat center center;
+            transition: 0.2s;
+        }
+
+        #footer .btnLink .btnLink01.show ul {
+            bottom: 42px;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #footer .btnLink .btnLink01 ul {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: auto;
+            bottom: 0;
+            padding: 12px 22px;
+            background: #f4c94a;
+            border-radius: 5px;
+            box-sizing: border-box;
+            opacity: 0;
+            overflow: hidden;
+            visibility: hidden;
+            transition: all .2s ease;
+            z-index: 2;
+        }
+
+        .no_footer {
+            height: auto;
+            min-height: 100%;
+            padding-bottom: 152px;
+        }
+
+        #footer .btnLink .btnLink01 {
+            position: relative;
+            float: left;
+        }
+
+        .notice_{
+            float:left;
+            margin-left:17.5%;
+        }
+
+        .best_{
+            float:right;
+            margin-right:17.5%;
+        }
+
+        .board_wrap {
+            width: 1245px;
+            margin: 0 auto;
+            margin-top : 20px;
+            margin-bottom : 40px;
+        }
+
+        .board_title {
+            margin-bottom: 10px;
+        }
+
+        .board_title strong {
+            font-size: 2rem;
+            color :#5486DD;
+        }
+
+        .board_title p {
+            margin-top: 5px;
+            font-size: 1rem;
+        }
+
+        .bt_wrap {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0;
+        }
+
+        .bt_wrap a {
+            display: inline-block;
+            min-width: 80px;
+            margin-left: 10px;
+            padding: 5px;
+            border: 1px solid #000;
+            border-radius: 2px;
+            font-size: 1rem;
+        }
+
+        .bt_wrap a:first-child {
+            margin-left: 0;
+            border: 1px solid #5486DD;
+        }
+
+        .bt_wrap a.on {
+            background: #5486DD;
+            color: #fff;
+        }
+
+        .board_list {
+            width: 100%;
+            border-top: 2px solid #000;
+        }
+
+        .board_list>div {
+            border-bottom: 1px solid #ddd;
+            font-size: 0;
+        }
+
+        .board_list>div.top {
+            border-bottom: 1px solid #999;
+        }
+
+        .board_list>div:last-child {
+            border-bottom: 1px solid #000;
+        }
+
+        .board_list>div>div {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 1rem;
+        }
+
+        .board_list .num {
+            width: 10%;
+        }
+
+        .board_list .top .title {
+            text-align: center;
+        }
+
+        .board_list .title {
+            width: 60%;
+            text-align: left;
+        }
+
+        .board_list .writer {
+            width: 10%;
+        }
+
+        .board_list .date {
+            width: 10%;
+        }
+
+        .board_list .count {
+            width: 10%;
+        }
+
+        .board_list>div.top>div {
+            font-weight: 600;
+        }
+
+        .board_page {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0;
+        }
+
+        .board_page a {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            box-sizing: border-box;
+            vertical-align: middle;
+            line-height: 100%;
+            border: 1px solid #ddd;
+            border-left: 0;
+        }
+
+        .board_page a.bt {
+            padding-top: 10px;
+            font-size: 1.2rem;
+            letter-spacing: -1px;
+        }
+
+        .board_page a:first-child {
+            border-left: 1px solid #ddd;
+        }
+
+        .board_page a.bt {
+            font-size: 0.8rem;
+            vertical-align: middle;
+            padding-top: 10px;
+        }
+
+        .board_page a.num {
+            padding-top: 7px;
+            font-size: 1rem;
+            vertical-align: middle;
+        }
+
+        .board_page a.num.on {
+            border-color: #5486DD;
+            background: #5486DD;
+            color: #fff;
+        }
+
+        .btnLink .btnLink01 button.rotate {
+            background: #526379;
+            color: #b1c0d6;
+        }
+
+        .btnLink .btnLink01 button.rotate::after {
+            transform: rotateX(180deg);
+            transform-origin: center center;
+        }
+
+        .display_list{
+            width:1245px;
+            margin:0 auto;
+            height:1000px;
+        }
+
+        #dataset, #best_dataset{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="no_footer">
+        <div>
+            <ul class="nav">
+                <li>
+                    <a href="https://www.smu.ac.kr/ko/index.do"><img src="image/smu.logo.png"
+                            style="width: 160px; height: 65px;"></a>
+                </li>
+                <li>
+                    <a href="Home.html" class="category"> Home </a>
+                </li>
+                <li>
+                    <a href="DataWiki.html" class="category"> Data Wiki</a>
+                </li>
+                <li>
+                    <a href="ShareHub.html" class="category"> Share hub</a>
+                </li>
+                <li>
+                    <a class="category" onclick="Colosseum();"> Colosseum </a>
+                </li>
+                <li>
+                    <a href="Forum.html" class="category"> Forum </a>
+                </li>
+                <li>
+                    <a href="https://swai.smu.ac.kr/"><img src="image/sw.logo.png" style="width: 230px; height: 65px;"></a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main_banr">
+            <img src="image/banr.png" class="banr" width="1245px" height="100px">
+        </div>
+
+        <div class="wrapper">
+            <div class="container">
+                <ul class="slider">
+                    <li class="item"></li>
+                    <li class="item"></li>
+                    <li class="item"></li>
+                    <li class="item"></li>
+                    <li class="item"></li>
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            let jsData = JSON.parse(JSON.stringify(data)); // json 파일 가져오기
+
+            var slideWrapper = document.querySelector('.container');
+            var slides = document.querySelectorAll('.item');
+            var totalSlides = slides.length; // item의 갯수
+
+
+            var sliderWidth = slideWrapper.clientWidth; // container의 width
+            var slideIndex = 0;
+            var slider = document.querySelector('.slider');
+
+            slider.style.width = sliderWidth * totalSlides + 'px';
+
+            showSlides()
+
+            function showSlides() {
+                for (var i = 0; i < slides.length; i++) {
+                    slider.style.left = -(sliderWidth * slideIndex) + 'px';
+                }
+                slideIndex++;
+                if (slideIndex === totalSlides) {
+                    slideIndex = 0;
+                }
+                setTimeout(showSlides, 5000);
+            }
+
+            function Colosseum(){
+                alert("구현되지 않는 카테고리 입니다.");
+            }
+
+            function get_num(i){
+                var num = i;
+                window.localStorage.setItem("list_number",num);
+            }
+
+            window.onload = function(){
+                let forumData = JSON.parse(JSON.stringify(Forum));
+                
+                for(var i = 0; i<11; i++){
+                    var count = localStorage.getItem("Count_text");
+                    var number = i+1;
+                    var fbest = forumData[i].best;
+                    if(count < 11){
+                        localStorage.setItem("text_best"+number,fbest);
+                        localStorage.setItem("Count_text",i+1);
+                    }
+                    var ftitle = forumData[i].title;
+                    var fname = forumData[i].name;
+                    var ftext = forumData[i].text;
+                    var fdate = forumData[i].date;
+                    localStorage.setItem("text"+number,number);
+                    localStorage.setItem("text_title"+number,ftitle);
+                    localStorage.setItem("text_name"+number,fname);
+                    localStorage.setItem("text_text"+number,ftext);
+                    localStorage.setItem("text_date"+number,fdate);
+
+                }
+
+                var len2 = localStorage.getItem("Count_text");
+                var max2 = new Array(3);
+                var max_index2 = new Array(3);
+                max2[0] = 0;
+                max2[1] = 0;
+                max2[2] = 0;
+                for(var k = 1; k<len2; k++){
+                    var num = localStorage.getItem("text_best"+k);
+                    if(Number(max2[0]) < Number(num)){
+                        max2[0] = localStorage.getItem("text_best"+k);
+                        max_index2[0] = k;
+                    } 
+                }
+
+                for(var k = 1; k<len2; k++){
+                    if(Number(max2[1]) < Number(localStorage.getItem("text_best"+k)) && Number(max2[0])>Number(localStorage.getItem("text_best"+k))){
+                        max2[1] = localStorage.getItem("text_best"+k);
+                        max_index2[1] = k;
+                    } 
+                }
+
+                for(var k = 1; k<len2; k++){
+                    if(Number(max2[2]) < Number(localStorage.getItem("text_best"+k)) && Number(max2[1])>Number(localStorage.getItem("text_best"+k))){
+                        max2[2] = localStorage.getItem("text_best"+k);
+                        max_index2[2] = k;
+                    }
+                }
+
+                for(var index = 0; index<3; index++){
+                    var i = max_index2[index];
+                    document.getElementById('list').innerHTML += "<div><div class='num'>"+localStorage.getItem('text'+i)+"</div><div class='title'><a href='view.html' onclick='get_num("+localStorage.getItem('text'+i)+")'>"+localStorage.getItem('text_title'+i)+"</a></div><div class='writer'>"+localStorage.getItem('text_name'+i)+"</div><div class='date'>"+localStorage.getItem('text_date'+i)+"</div><div class='count'>"+localStorage.getItem('text_best'+i)+"</div></div>";
+                }
+
+                var colosseum = [
+                        {
+                            "num":"1",
+                            "name":"천하제일 얼굴 인식대회",
+                            "sdate":"2022.04.01",
+                            "edate" :"2022.05.01",
+                            "data":"celebA"
+                        },
+                        {
+                            "num":"2",
+                            "name":"도로위 인식의 최강자 선발 대회",
+                            "sdate":"2022.06.01",
+                            "edate" :"2022.07.01",
+                            "data":"kitti"
+                        },
+                        {
+                            "num":"3",
+                            "name":"Did you understand what I said?",
+                            "sdate":"2022.08.01",
+                            "edate" :"2022.09.01",
+                            "data":"wmt19"
+                        }
+                    ];
+
+                    date = new Date();
+                    var to_month = date.getMonth() + 1;
+                    var to_year = date.getFullYear();
+                    if(Number(to_month) < 10) to_month = "0"+to_month;
+
+                    if(Number(date.getDate()) < 10) var to_Date = '0'+date.getDate();
+                    else var to_date = date.getDate();
+
+                    var today = to_year+"."+to_month+"."+to_date;
+
+                    for(var i = 0; i<3; i++){
+                        if(today < colosseum[i].edate)
+                            document.getElementById('colosseum').innerHTML += "<div><div class='num'>"+colosseum[i].num+"</div><div class='title'>"+colosseum[i].name+"</a></div><div class='writer'>"+colosseum[i].sdate+"</div><div class='date'>"+colosseum[i].edate+"</div><div class='count'>"+colosseum[i].data+"</div></div>";
+                    }
+
+                    var jsondata = [
+                    {
+                    "id": "faust",
+                    "name": "faust",
+                    "description": "The FAUST dataset is a dataset of real 3D scans of humans. It contains 10 scanned human shapes in 10 different poses, resulting in a total of 100 non-watertight meshes with 6,890 nodes each.",
+                    "link": "http://faust.is.tue.mpg.de/",
+                    "category": "3-D Image",
+                    "field": "Semantic Segmentation",
+                    "task": "Semantic_Segmentation,3D_Reconstruction,3D_Point_Cloud_Matching",
+                    "instances": "-",
+                    "num": 5,
+                    "tutorial": "-"
+                    },
+                    {
+                    "id": "scape",
+                    "name": "Scape",
+                    "description": "-",
+                    "link": "https://ai.stanford.edu/~drago/Projects/scape/scape.html",
+                    "category": "3-D Image",
+                    "field": "3-D Estimation",
+                    "task": "-",
+                    "instances": "-",
+                    "num": 6,
+                    "tutorial": "-"
+                    },
+                    {
+                    "id": "voxceleb",
+                    "name": "VoxCeleb",
+                    "description": "-",
+                    "link": "http://www.robots.ox.ac.uk/~vgg/data/voxceleb/",
+                    "category": "Sound",
+                    "field": "Video Reconstruction",
+                    "task": "-",
+                    "instances": "-",
+                    "num": 1,
+                    "tutorial": "-"
+                    }
+                    ];
+
+                    for(var i = 0; i<3; i++){
+                        document.getElementById('dataset').innerHTML += "<div><div class='title' style='text-align: center;'>"+jsondata[i].name+"</div><div class='writer' style='width:100px;'>"+jsondata[i].category+"</div></div>";
+                    }
+
+
+                    var max2 = new Array(3);
+                var max_index2 = new Array(3);
+                var len2 = 60;
+
+                max2[0] = 0;
+                max2[1] = 0;
+                max2[2] = 0;
+
+                for(var k = 1; k<len2; k++){
+                    var number = jsData[k].num;
+                    if(Number(max2[0]) < number){
+                        max2[0] = number;
+                        max_index2[0] = k;
+                    } 
+                }
+                localStorage.setItem("dataname0",jsData[max_index2[0]].name);
+                localStorage.setItem("datacategory0",jsData[max_index2[0]].category);
+                localStorage.setItem("datanum0",jsData[max_index2[0]].num);
+
+                for(var k = 1; k<len2; k++){
+                    var number = jsData[k].num;
+                    if((Number(max2[1]) < number) && (Number(max2[0])>number)){
+                        max2[1] = number;
+                        max_index2[1] = k;
+                    } 
+                }
+                localStorage.setItem("dataname1",jsData[max_index2[1]].name);
+                localStorage.setItem("datacategory1",jsData[max_index2[1]].category);
+                localStorage.setItem("datanum1",jsData[max_index2[1]].num);
+
+                for(var k = 1; k<len2; k++){
+                    var number = jsData[k].num;
+                    if((Number(max2[2]) < number) && (Number(max2[1])>number)){
+                        max2[2] = number;
+                        max_index2[2] = k;
+                    }
+                }
+                localStorage.setItem("dataname2",jsData[max_index2[2]].name);
+                localStorage.setItem("datacategory2",jsData[max_index2[2]].category);
+                localStorage.setItem("datanum2",jsData[max_index2[2]].num);
+                
+                    for(var i = 0; i<3; i++){
+                        document.getElementById('best_dataset').innerHTML += "<div><div class='title' style='text-align: center;'>"+localStorage.getItem("dataname"+i)+"</div><div class='writer' style='width:100px;'>"+localStorage.getItem("datacategory"+i)+"</div><div class='count'>"+localStorage.getItem("datanum"+i)+"</div></div>";
+                    }
+            }
+            
+
+
+        </script>
+        <br>
+        <div class="display_list">
+            <div class="board_wrap">
+                <div class="board_title">
+                    <strong>베스트 게시물</strong>
+                    <p>추천수 상위 3개 게시물입니다.</p>
+                </div>
+    
+                <div class="board_list_wrap">
+                    <div class="board_list" id="list">
+                        <div class="top">
+                            <div class="num">번호</div>
+                            <div class="title">제목</div>
+                            <div class="writer">글쓴이</div>
+                            <div class="date">작성일</div>
+                            <div class="count">추천</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="board_wrap">
+                <div class="board_title">
+                    <strong>Colosseum</strong>
+                    <p>콜로세움 베스트 3개 입니다. 종료된 게시물은 보이지 않습니다.</p>
+                </div>
+    
+                <div class="board_list_wrap">
+                    <div class="board_list" id="colosseum">
+                        <div class="top">
+                            <div class="num">번호</div>
+                            <div class="title">이름</div>
+                            <div class="writer">시작일</div>
+                            <div class="date">종료일</div>
+                            <div class="count">데이터 종류</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin:0 auto; width:1050px;">
+                <div class="board_wrap" style="width:500px; float:left;">
+                    <div class="board_title">
+                        <strong>데이터셋</strong>
+                        <p>하위 데이터셋 3개 항목입니다.</p>
+                    </div>
+        
+                    <div class="board_list_wrap">
+                        <div class="board_list" id="dataset">
+                            <div class="top">
+                                <div class="title">데이터명</div>
+                                <div class="writer" style="width:100px;">카테고리</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="board_wrap" style="width:500px; float:right;">
+                    <div class="board_title">
+                        <strong>BEST 데이터셋</strong>
+                        <p>데이터셋 개수 상위 3개 항목입니다.</p>
+                    </div>
+        
+                    <div class="board_list_wrap">
+                        <div class="board_list" id="best_dataset">
+                            <div class="top">
+                                <div class="title">데이터명</div>
+                                <div class="writer" style="width:100px;">카테고리</div>
+                                <div class="count">개수</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="inner">
+            <div class="layoutLeft">
+                <div class="link">
+                    <ul>
+                        <li class="color"><a href="https://www.smu.ac.kr/ko/intro/privacyPolicy.do"
+                                target="_blank">개인정보처리방침</a></li>
+                        <li><a href="https://swai.smu.ac.kr/98/03.php">이메일주소무단수집거부</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="layoutRight">
+                <div class="btnLink">
+                    <div class="btnLink01">
+                        <button>관련 사이트</button>
+                        <ul class="btnLinks" id="dropList01">
+                            <li><a href="https://www.smu.ac.kr/" target="_blank"style="font-size:14px;">상명대학교</a></li>
+                            <li><a href="http://www.swuniv.kr/" target="_blank" style="font-size:14px;">소프트웨어중심대학협의회</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <div class="info">
+                    <span class="address">(03016) 서울시 종로구 홍지문 2길 20 상명대학교 SW중심대학사업단</span>
+                </div>
+                <div class="info">
+                    <span class="copy">Copyright By SangMyung University. All Rights Reserved.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.btnLink01').find('button').bind('click', function () {
+                if ($(this).parents('.btnLink01').hasClass('show') == false) {
+                    $(this).parents('.btnLink01').removeClass('show');
+                    $(this).parents('.btnLink01').addClass('show');
+                    $(this).addClass('rotate');
+                } else {
+                    $(this).parents('.btnLink01').removeClass('show');
+                    $(this).removeClass('rotate');
+                }
+                return false;
+            });
+        });
+    </script>
+
+</body>
+
+</html>
