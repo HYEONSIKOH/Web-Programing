@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title> Order Page </title>
+    <link rel="stylesheet" type="text/css" href="style-size.css" />
+    <link rel="stylesheet" type="text/css" href="style-layout.css" />
+    <link rel="stylesheet" type="text/css" href="style-presentation.css" />
+    <style type="text/css">
+        caption {
+            font-size: 20pt;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body id="order">
+    <div class="head"> 서적 주문 양식 </div>
+    <br>
+    <form action="">
+        <table>
+            <caption>[ 주문서 ]</caption>
+            <br>
+            <tr>
+                <th> 책 제목 </th>
+                <th> 가격 </th>
+                <th> 수량 </th>
+                <th> 합계 </th>
+            </tr>
+            <tr>
+                <td>컴퓨터와 IT기술의 이해 [개정판-2판]</td>
+                <td> 27,000원 </td>
+                <td> <input id="book1" type="text" size="2" value="0" onkeyup="updateAll();"> </td>
+                <td> <input id="book1Total" type="text" size="6" value="0" /> 원</td>
+            </tr>
+            <tr>
+                <td> 소셜미디어의 이해와 활용</td>
+                <td> 21,000원 </td>
+                <td> <input id="book2" type="text" size="2" value="0" onkeyup="updateAll();" /> </td>
+                <td> <input id="book2Total" type="text" size="6" value="0" /> 원</td>
+            </tr>
+            <tr>
+                <td> (알기 쉬운) 알고리즘 </td>
+                <td> 24,000원 </td>
+                <td> <input id="book3" type="text" size="2" value="0" onkeyup="updateAll();" /> </td>
+                <td> <input id="book3Total" type="text" size="6" value="0" /> 원</td>
+            </tr>
+            <tr>
+                <td> 선형대수학 Express</td>
+                <td> 27,000원 </td>
+                <td> <input id="book4" type="text" size="2" value="0" onkeyup="updateAll();" /> </td>
+                <td> <input id="book4Total" type="text" size="6" value="0" /> 원</td>
+            </tr>
+            <tr>
+                <td> 루비 프로그래밍 언어</td>
+                <td> 29,000원 </td>
+                <td> <input id="book5" type="text" size="2" value="0" onkeyup="updateAll();" /> </td>
+                <td> <input id="book5Total" type="text" size="6" value="0" /> 원</td>
+            </tr>
+            <tr>
+                <td> 멀티미디어 배움터 2.0</td>
+                <td> 25,000원 </td>
+                <td> <input id="book6" type="text" size="2" value="0" onkeyup="updateAll();" /> </td>
+                <td> <input id="book6Total" type="text" size="6" value="0" /> 원</td>
+            </tr>
+            <tr>
+                <td> 네트워크 보안 에센셜(4판)</td>
+                <td> 30,000원 </td>
+                <td> <input id="book7" type="text" size="2" value="0" onkeyup="updateAll();" /> </td>
+                <td> <input id="book7Total" type="text" size="6" value="0" /> 원</td>
+            </tr>
+            <tr>
+                <td> 비즈니스 정보 시스템 </td>
+                <td> 28,000원 </td>
+                <td> <input id="book8" type="text" size="2" value="0" onkeyup="updateAll();" /> </td>
+                <td> <input id="book8Total" type="text" size="6" value="0" /> 원</td>
+            </tr>
+            <tr>
+                <td> 회로이론</td>
+                <td> 35,000원 </td>
+                <td> <input id="book9" type="text" size="2" value="0" onkeyup="updateAll();" /> </td>
+                <td> <input id="book9Total" type="text" size="6" value="0" /> 원</td>
+            </tr>
+            <tr>
+                <td> Big Java</td>
+                <td> 32,000원 </td>
+                <td> <input id="book10" type="text" size="2" value="0" onkeyup="updateAll();" /> </td>
+                <td> <input id="book10Total" type="text" size="6" value="0" /> 원</td>
+            </tr>
+            <tr>
+                <td> 경영학의 이해</td>
+                <td> 30,000원 </td>
+                <td> <input id="book11" type="text" size="2" value="0" onkeyup="updateAll();" /> </td>
+                <td> <input id="book11Total" type="text" size="6" value="0" /> 원</td>
+            </tr>
+            <tr>
+                <td> 컴퓨터 배움터</td>
+                <td> 27,000원 </td>
+                <td> <input id="book12" type="text" size="2" value="0" onkeyup="updateAll();" /> </td>
+                <td> <input id="book12Total" type="text" size="6" value="0" /> 원</td>
+            </tr>
+            <tr>
+                <td> 합계 </td>
+                <td> &nbsp; </td>
+                <td> <input id="totalNumber" type="text" size="2" value="0" /> </td>
+                <td> <input id="totalPrice" type="text" size="6" value="0" /> 원</td>
+            </tr>
+        </table> <br>
+        <p><strong>반드시 <span style="color: red;">로그인</span>을 진행 후, 주문하기를 눌러주세요!</strong></p>
+
+        <script type="text/javascript">
+            var n = new Array(12); // 수량
+            var p = new Array(12); // 총 가격
+            var Totalnumber = 0, Totalprice = 0; // 지역변수 값을 전역변수 값으로 집어넣음 (도대체 왜 오류가 날까...;;;)
+
+            function updateAll() {
+                var totalNumber = 0;
+                var totalPrice = 0;
+                n[0] = document.getElementById("book1").value;
+                n[1] = document.getElementById("book2").value;
+                n[2] = document.getElementById("book3").value;
+                n[3] = document.getElementById("book4").value;
+                n[4] = document.getElementById("book5").value;
+                n[5] = document.getElementById("book6").value;
+                n[6] = document.getElementById("book7").value;
+                n[7] = document.getElementById("book8").value;
+                n[8] = document.getElementById("book9").value;
+                n[9] = document.getElementById("book10").value;
+                n[10] = document.getElementById("book11").value;
+                n[11] = document.getElementById("book12").value;
+
+                p[0] = 27000 * n[0];
+                p[1] = 21000 * n[1];
+                p[2] = 24000 * n[2];
+                p[3] = 27000 * n[3];
+                p[4] = 29000 * n[4];
+                p[5] = 25000 * n[5];
+                p[6] = 30000 * n[6];
+                p[7] = 28000 * n[7];
+                p[8] = 35000 * n[8];
+                p[9] = 32000 * n[9];
+                p[10] = 30000 * n[10];
+                p[11] = 27000 * n[11];
+                document.getElementById("book1Total").value = p[0];
+                document.getElementById("book2Total").value = p[1];
+                document.getElementById("book3Total").value = p[2];
+                document.getElementById("book4Total").value = p[3];
+                document.getElementById("book5Total").value = p[4];
+                document.getElementById("book6Total").value = p[5];
+                document.getElementById("book7Total").value = p[6];
+                document.getElementById("book8Total").value = p[7];
+                document.getElementById("book9Total").value = p[8];
+                document.getElementById("book10Total").value = p[9];
+                document.getElementById("book11Total").value = p[10];
+                document.getElementById("book12Total").value = p[11];
+
+                for (var i = 0; i < 12; i++) totalNumber += parseInt(n[i]);
+                document.getElementById("totalNumber").value = totalNumber;
+                Totalnumber = totalNumber;
+
+                for (var i = 0; i < 12; i++) totalPrice += p[i];
+                document.getElementById("totalPrice").value = totalPrice;
+                Totalprice = totalPrice;
+            }
+
+            function addRow() {
+                var savadValue = sessionStorage.getItem(0);
+                if(savadValue == null) alert("로그인 해주세요~!");
+                
+                else{ 
+                alert(savadValue+"님의 주문 내역입니다.");
+                var name = new Array(12); // 이름
+                name[0] = "컴퓨터와 IT기술의 이해 [개정판-2판]";
+                name[1] = "소셜미디어의 이해와 활용";
+                name[2] = "(알기 쉬운) 알고리즘";
+                name[3] = "선형대수학 Express";
+                name[4] = "루비 프로그래밍 언어";
+                name[5] = "멀티미디어 배움터 2.0";
+                name[6] = "네트워크 보안 에센셜(4판)";
+                name[7] = "비즈니스 정보 시스템";
+                name[8] = "회로이론";
+                name[9] = "Big Java";
+                name[10] = "경영학의 이해";
+                name[11] = "컴퓨터 배움터";
+
+                document.write('<table border="1" align="center" style="border: 1px solid black;border-collapse: collapse;text-align: center;">');
+                document.write('<caption style="font-size: 15pt; height: 30px;">[ 영수증 ]</caption>');
+                document.write('<tr>');
+                document.write('<th style = "width: 300px; border: 1px solid black;border-collapse: collapse;text-align: center;">책 제목</th> <th style = "width: 100px;">수량(개)</th> <th style = "width: 100px;">총 가격(원)</th>');
+                document.write('</tr>');
+                for (var index = 0; index < 12; index++) {
+                    if (p[index] != 0) {
+                        document.write('<tr>');
+                        document.write('<td style = "border: 1px solid black;border-collapse: collapse;text-align: center;">' + name[index] + '</td>');
+                        document.write('<td style = "border: 1px solid black;border-collapse: collapse;text-align: center;">' + n[index] + '</td>');
+                        document.write('<td style = "border: 1px solid black;border-collapse: collapse;text-align: center;">' + p[index] + '</td>');
+                        document.write('</tr>');
+                    }
+                }
+
+                document.write('<tr>');
+                document.write('<th style = "border: 1px solid black;border-collapse: collapse;text-align: center;"> 합계 </th>');
+                document.write('<th style = "border: 1px solid black;border-collapse: collapse;text-align: center;">' + Totalnumber + '</th>');
+                document.write('<th style = "border: 1px solid black;border-collapse: collapse;text-align: center;">' + Totalprice + '</th>');
+                document.write('</tr>');
+
+                document.write('</table>');
+                document.write('<p align="center"><strong>'+savadValue+'님 주문 완료되었습니다!</strong></p>');
+                }
+            }
+        </script>
+        <input type="reset" value="초기화">
+        <input type="button" value="주문하기" onclick="addRow();" target="_blank">
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>SM서점</title>
+    <link rel="stylesheet" type="text/css" href="style-size.css" />
+    <link rel="stylesheet" type="text/css" href="style-layout.css" />
+    <link rel="stylesheet" type="text/css" href="style-presentation.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <a id="logo" href="main.html"> Welcome to SM서점 </a>
+            <span class="right" style="padding: 30px 10px;">
+                <a href="login.html" target="display_area">로그인</a> |
+                <a href="signup.html" target="_blank">회원가입</a>
+            </span>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="domestic_books.html" target="display_area">국내도서</a></li>
+                <li><a href="foreign_books.html" target="display_area">해외번역도서</a></li>
+                <li><a href="music.html" target="display_area">음반/DVD</a></li>
+                <li class="right"><a href="order.html" target="display_area">주문하기</a></li>
+            </ul>
+        </nav>
+
+        <hr />
+
+        <article class="left">
+            <iframe name="display_area" src="images/books.jpg" width="600px" height="500px"></iframe>
+        </article>
+
+        <aside class="right">
+            <a href="BookList_korean.html" target="display_area"><button id="all" style="width:85px">전체</button></a><br/>
+            <a href="Best_seller.html" target="display_area"><button id="best" style="width:85px">베스트셀러</button></a><br />
+            <a href="Best_book.html" target="display_area"><button id="recommend" style="width:85px">추천도서</button></a><br />
+            <button id="location" style="width:85px" onclick="getMyLocation();" target="display_area";>현재위치</button>
+        </aside>
+
+        <hr />
+
+        <footer>
+            <div id="copyright">
+                Copyright (c) 2016 SM Bookstore Inc. All rights reserved
+            </div>
+            <div id="SNS">
+                <a href="https://github.com/HYEONSIKOH" target="_blank">
+                    <img src="images/Github.png" height="32" alt="Github">
+                </a>
+                <a href="https://www.facebook.com/HYEONSIK47/" target="_blank">
+                    <img src="images/facebook.png" height="32" alt="Facebook">
+                </a>
+                <a href="http://twitter.com" target="_blank">
+                    <img src="images/twitter.png" height="32" alt="Twitter">
+                </a>
+                <a href="http://plus.google.com" target="_blank">
+                    <img src="images/googleplus-icon.png" height="32" alt="Google Plus">
+                </a>
+            </div>
+        </footer>
+    </div>
+    <script type="text/javascript">
+        function getMyLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(myCallback);
+            }
+            else {
+                alert("지오로케이션이 지원되지 않습니다.");
+            }
+        }
+
+        function myCallback(myPosition) {
+            var latitude = myPosition.coords.latitude,
+                longitude = myPosition.coords.longitude,
+                date = new Date(myPosition.timestamp),
+                parsedDate = date.toUTCString();
+            alert('위도: ' + latitude+'\n경도: ' + longitude);
+        }
+    </script>
+</body>
+
+</html>

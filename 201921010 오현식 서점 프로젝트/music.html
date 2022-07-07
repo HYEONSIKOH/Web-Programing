@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title> Music and DVD </title>
+  <link rel="stylesheet" type="text/css" href="style-size.css" />
+  <link rel="stylesheet" type="text/css" href="style-layout.css" />
+  <link rel="stylesheet" type="text/css" href="style-presentation.css" />
+  <script type="text/javascript"></script>
+</head>
+
+<body class="booklist musiclist aerialview">
+  <div class="head">음반/DVD</div>
+  <ul>
+    <li>
+      <img height="200" src="http://peach.blender.org/wp-content/uploads/poster_rodents_small.jpg" />
+      <br />
+      <button disabled><strong>재생시간 / 총시간: &nbsp;<span id="audio_time"> 0 / 0(초)</span></strong></button><br />
+      Big Buck Bunny - 4 - Death Becomes Fur<br />
+      <audio id="myaudio" src="http://media.w3.org/2010/07/bunny/04-Death_Becomes_Fur.mp4">
+        Your browser does not support the audio tag.
+      </audio>
+      <button id="audio_playbtn" onclick="audio_Play();">재생</button>
+      볼륨:&nbsp;<input id="audio_volctrl" onchange="audio_updateVolume();" type="range" max="1" step="any">&nbsp;
+
+    </li>
+    <script>
+      var myAudio = document.getElementById("myaudio"),
+        audio_playBtn = document.getElementById("audio_playbtn"),
+        audio_volumeCtrl = document.getElementById("audio_volctrl"),
+        audio_timeDiv = document.getElementById("audio_time");
+
+      myAudio.addEventListener('timeupdate', function () {
+        audio_timeDiv.innerHTML = Math.floor(myAudio.currentTime) + " / " + Math.floor(myAudio.duration) + "(초)";
+      });
+
+      function audio_Play() {
+        if (myAudio.paused) {
+          audio_playBtn.innerHTML = "일시정지";
+          myAudio.play();
+
+        } else {
+          audio_playBtn.innerHTML = "재생";
+          myAudio.pause();
+        }
+      }
+
+      function audio_updateVolume() {
+        myAudio.volume = audio_volumeCtrl.value;
+      }
+    </script>
+    <li>
+      <img height="200" src="http://www.sintel.org/wp-content/uploads/2010/05/title-Sintel.jpg" />
+      <video id="myvideo" src="http://media.w3.org/2010/05/sintel/trailer.mp4">
+        Your browser does not support the video tag.
+      </video><br>
+      <button id="video_playbtn" onclick="video_Play();">재생</button>
+      볼륨:&nbsp;<input id="video_volctrl" onchange="video_updateVolume();" type="range" max="1" step="any">&nbsp;
+      <button disabled><strong>재생시간 / 총시간: &nbsp;<span id="video_time"> 0 / 0(초)</span></strong></button>
+    </li>
+  </ul>
+  <script>
+    var myVideo = document.getElementById("myvideo"),
+      video_playBtn = document.getElementById("video_playbtn"),
+      video_volumeCtrl = document.getElementById("video_volctrl"),
+      video_timeDiv = document.getElementById("video_time");
+
+    myVideo.addEventListener('timeupdate', function () {
+      video_timeDiv.innerHTML = Math.floor(myVideo.currentTime) + " / " + Math.floor(myVideo.duration) + "(초)";
+    });
+
+    function video_Play() {
+      if (myVideo.paused) {
+        video_playBtn.innerHTML = "일시정지";
+        myVideo.play();
+
+      } else {
+        video_playBtn.innerHTML = "재생";
+        myVideo.pause();
+      }
+    }
+
+    function video_updateVolume() {
+      myVideo.volume = video_volumeCtrl.value;
+    }
+  </script>
+</body>
+
+</html>
