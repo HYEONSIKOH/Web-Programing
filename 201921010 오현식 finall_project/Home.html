@@ -2,8 +2,9 @@
 <html lang="ko">
 
 <head>
-    <meta charset="utf-8">
     <title>상명 Data Wiki</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -43,7 +44,7 @@
         }
 
         .banr{
-            margin-bottom: 10px; 
+            margin-bottom: 10px;
             position: relative;
         }
 
@@ -543,7 +544,7 @@
 
             window.onload = function(){
                 let forumData = JSON.parse(JSON.stringify(Forum));
-                
+
                 for(var i = 0; i<11; i++){
                     var count = localStorage.getItem("Count_text");
                     var number = i+1;
@@ -575,14 +576,14 @@
                     if(Number(max2[0]) < Number(num)){
                         max2[0] = localStorage.getItem("text_best"+k);
                         max_index2[0] = k;
-                    } 
+                    }
                 }
 
                 for(var k = 1; k<len2; k++){
                     if(Number(max2[1]) < Number(localStorage.getItem("text_best"+k)) && Number(max2[0])>Number(localStorage.getItem("text_best"+k))){
                         max2[1] = localStorage.getItem("text_best"+k);
                         max_index2[1] = k;
-                    } 
+                    }
                 }
 
                 for(var k = 1; k<len2; k++){
@@ -693,7 +694,7 @@
                     if(Number(max2[0]) < number){
                         max2[0] = number;
                         max_index2[0] = k;
-                    } 
+                    }
                 }
                 localStorage.setItem("dataname0",jsData[max_index2[0]].name);
                 localStorage.setItem("datacategory0",jsData[max_index2[0]].category);
@@ -704,7 +705,7 @@
                     if((Number(max2[1]) < number) && (Number(max2[0])>number)){
                         max2[1] = number;
                         max_index2[1] = k;
-                    } 
+                    }
                 }
                 localStorage.setItem("dataname1",jsData[max_index2[1]].name);
                 localStorage.setItem("datacategory1",jsData[max_index2[1]].category);
@@ -720,12 +721,12 @@
                 localStorage.setItem("dataname2",jsData[max_index2[2]].name);
                 localStorage.setItem("datacategory2",jsData[max_index2[2]].category);
                 localStorage.setItem("datanum2",jsData[max_index2[2]].num);
-                
+
                     for(var i = 0; i<3; i++){
                         document.getElementById('best_dataset').innerHTML += "<div><div class='title' style='text-align: center;'>"+localStorage.getItem("dataname"+i)+"</div><div class='writer' style='width:100px;'>"+localStorage.getItem("datacategory"+i)+"</div><div class='count'>"+localStorage.getItem("datanum"+i)+"</div></div>";
                     }
             }
-            
+
 
 
         </script>
@@ -736,7 +737,7 @@
                     <strong>베스트 게시물</strong>
                     <p>추천수 상위 3개 게시물입니다.</p>
                 </div>
-    
+
                 <div class="board_list_wrap">
                     <div class="board_list" id="list">
                         <div class="top">
@@ -749,13 +750,13 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="board_wrap">
                 <div class="board_title">
                     <strong>Colosseum</strong>
                     <p>콜로세움 베스트 3개 입니다. 종료된 게시물은 보이지 않습니다.</p>
                 </div>
-    
+
                 <div class="board_list_wrap">
                     <div class="board_list" id="colosseum">
                         <div class="top">
@@ -775,7 +776,7 @@
                         <strong>데이터셋</strong>
                         <p>하위 데이터셋 3개 항목입니다.</p>
                     </div>
-        
+
                     <div class="board_list_wrap">
                         <div class="board_list" id="dataset">
                             <div class="top">
@@ -785,13 +786,13 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="board_wrap" style="width:500px; float:right;">
                     <div class="board_title">
                         <strong>BEST 데이터셋</strong>
                         <p>데이터셋 개수 상위 3개 항목입니다.</p>
                     </div>
-        
+
                     <div class="board_list_wrap">
                         <div class="board_list" id="best_dataset">
                             <div class="top">

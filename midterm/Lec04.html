@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style type="text/css">
+        /* <link rel = "stylesheet" type = "text/css" href = "extern.css"/> */
+        .ex01 {
+            font-size: 17pt;
+        }
+
+        .ex01:before {
+            content: "[";
+            color: blue;
+        }
+
+        .ex01:after {
+            content: "]";
+            color: red;
+        }
+
+        #ex02_first {
+            background-image: url(arrow.png);
+            background-repeat: no-repeat;
+        }
+
+        #ex02_second {
+            background-image: url(arrow.png);
+        }
+
+        #ex02_third {
+            background-image: url(arrow.png);
+            background-repeat: no-repeat;
+            background-position: center bottom;
+        }
+
+        ul.ex03_outside-list {
+            list-style-position: outside
+        }
+
+        ul.ex03_inside-list {
+            list-style-position: inside
+        }
+
+        #ex04 { table-layout: auto; width: 90% }
+        #ex04 caption { font-size: 14pt; font-weight: bold; margin: 0.5em }
+
+        #ex05 { border-collapse: collapse; }
+        #ex06 { border-spacing: 8px; } 
+        #ex07 { empty-cells: hide; caption-side: bottom; margin: 1em }
+    </style>
+</head>
+
+<body>
+    <h3>
+        < 가상클래스 선택자>
+    </h3>
+    <p class="ex01"> Before content = [ , After content = ] </p>
+    <br>
+
+    <h3><span style="color:red; background-color: #90ff90">
+            < CSS 백그라운드 배경관련 속성>
+        </span></h3>
+    <table border='1'>
+        <tr>
+            <td id="ex02_first">배경 이미지 <br> º url(파일경로) <br><br><br><br><br>background-repeat <br> = repeat - x </td>
+            <td id="ex02_second">배경 이미지 <br> º url(파일경로) <br><br><br><br><br>background-repeat <br> = repeat </td>
+            <td id="ex02_third">배경 이미지 <br> º background-repeat <br> = no-repeat <br><br><br><br><br>
+                background-position<br> = center bottom </td>
+        </tr>
+    </table>
+    <br>
+
+    <h3>
+        < 목록과 표 장식>
+    </h3>
+    <ul class="ex03_outside-list">
+        <p>IT기술의 이해 - outside list</p>
+        <li>최윤철, 임순범, 한탁돈 공저, 컴퓨터와 IT 기술의 이해</li>
+        <li>D. Morley, C. Parker, Understanding Computers 15th Ed.</li>
+        <li>G. Shelly, M. Vermaat, Discovering Computers</li>
+    </ul>
+    <ul class="ex03_inside-list">
+        <p>웹프로그래밍 - inside list</p>
+        <li>임순범, 박희민 공저, HTML5 웹프로그래밍 입문</li>
+        <li>최윤철, 임순범 공저, 소셜미디어 시대의 인터넷활용</li>
+        <li>B. McLaughlin, What Is HTML5? (신규) </li>
+    </ul>
+    <br>
+
+    <table border="1" id="ex04">
+        <caption><h3>< 표의 레이아웃 방식 ></h3></caption>
+        <thead>
+        <tr>
+        <th>작가</th> <th>책제목</th> <th>출판사</th>
+        </tr>
+        </thead> 
+        <tbody>
+        <tr>
+        <td>월터아이작슨</td> <td>스티브잡스</td> <td>민음사</td>
+        </tr>
+        <tr>
+        <td>최윤철, 임순범</td> <td>멀티미디어 배움터</td> <td>생능출판사</td>
+        </tr>
+    </table>
+
+        <br>
+        <table border="1" id="ex05">
+            <caption>추천 도서 테이블 ex05</caption>
+            <thead>
+            <tr>
+            <th>작가</th> <th>책제목</th> <th>출판사</th>
+            </tr>
+            </thead> 
+            <tbody>
+            <tr>
+            <td>월터아이작슨</td> <td>스티브잡스</td> <td>민음사</td>
+            </tr>
+            <tr>
+            <td>최윤철, 임순범</td> <td>멀티미디어 배움터</td> <td>생능출판사</td>
+            </tr>
+        </table>
+
+            <br>
+            <table border="1" id="ex06">
+                <caption>추천 도서 테이블 ex06</caption>
+                <th>
+                <tr>
+                <th>작가</th> <th>책제목</th> <th>출판사</th>
+                </tr>
+                </th> 
+                <tbody>
+                <tr>
+                <td>월터아이작슨</td> <td>스티브잡스</td> <td>민음사</td>
+                </tr>
+                <tr>
+                <td>최윤철, 임순범</td> <td>멀티미디어 배움터</td> <td>생능출판사</td>
+                </tr>
+            </table>
+                <br>
+
+                <table border="1" id="ex07">
+                    <caption>추천 도서 테이블 ex07</caption>
+                    <thead>
+                    <tr>
+                    <th>작가</th> <th>책제목</th> <th>출판사</th>
+                    </tr>
+                    </thead> 
+                    <tbody>
+                    <tr>
+                    <td>월터아이작슨</td> <td>스티브잡스</td> <td>민음사</td>
+                    </tr>
+                    <tr>
+                    <td>최윤철, 임순범</td> <td>멀티미디어 배움터</td> <td>생능출판사</td>
+                    </tr>
+                </table>
+<p> <a href = "main.html">메인으로 돌아가기 >>>></a> <p>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style type="text/css">
+        .nomal{
+
+        }
+        h3 { 
+            display : inline;
+            color: red; 
+            background-color:#90ff90; 
+            margin-left: 10px; 
+            margin-right: 10px 
+        } 
+
+        h3:after { 
+            content: "(ⓒsblim)"; 
+            font-size:10pt;
+        }
+
+        .ex01_1 {
+            display: inline;
+            background-color: #ffff80;
+            padding: 3px;
+            border: thin dotted red
+        }
+
+        .ex01 {
+            display: block;
+            line-height: 12pt;
+            margin-left: 30%;
+            padding: 8px;
+            border: 4px inset green
+        }
+
+        strong{
+            background-color: silver;
+            margin: 10px;
+            padding: 6px;
+            border: 1px solid black
+        }
+
+        .ex01_red1 {
+            display: inline;
+            background-color: silver;
+            padding: 10px;
+            border: 1px solid black
+        }
+
+        body>div{
+            position: relative;
+            background-color : gray;
+            display : block; 
+            width : 300px;
+            height : 300px;
+            
+            top: 10px;
+            overflow : hidden;
+        }
+        .ex03_1{
+            z-index : 30;
+            position : absolute;
+            background-color : green;
+            background-position : bottom center;
+            width : 100px;
+            height : 100px;
+            top : 200px;
+            left : 200px;
+        }
+
+        .ex03_2{
+            z-index : 30;
+            position : absolute;
+            background-color : yellow;
+            width : 100px;
+            height : 100px;
+            left : 100px;
+            top : 100px;
+        }
+           
+
+        .ex03_3{
+            z-index : 30;
+            position : absolute;
+            background-color : red;
+            width : 100px;
+            height : 100px;
+        }
+
+        #ex04_1{ 
+            z-index: 1; 
+            position: relative; 
+            top: -20px; 
+            left: 0px;
+        }
+        #ex04_2 { 
+            z-index: 2; 
+            position: relative; 
+            top: -5px; 
+            left: -35px; 
+        } 
+        #ex04_3 { 
+            z-index: 3; 
+            position: relative; 
+            top: 5px; 
+            left: -65px; 
+        } 
+        #ex05_1 { 
+            float:left; 
+            border: thin solid black; 
+        }
+        #ex05_2 { 
+            float:left; 
+            top: 100px; 
+            left: 300px; 
+        } 
+        #ex05_3 { 
+            float:right; 
+            border: thin solid black;
+        }
+        #ex06{
+            width: 50%; 
+            min-width: 180px; 
+            height: 110px; 
+            border: medium double black;
+            border-radius: 10px;
+        }
+
+        #ex07:hover {
+            border: thick double blue; 
+            padding:4px; 
+            background-color: yellow; 
+            font-size: xx-large; 
+        }
+
+        #ex07_1 { 
+            position: absolute; 
+            top: 10px; 
+            right: 60px; 
+        }
+
+        #ex07_1:hover { 
+            border: thin solid red; 
+            width: 108px; 
+            height: 132px; 
+        }
+    </style>
+</head>
+
+<body>
+        <h3> <strong>스타일시트</strong> 이해하기</h3> 
+        <p class = "ex01_1">이 예제는 <strong>박스모델</strong>의 개념을 설명합니다.
+        <br><span class="ex01_red1">클래스</span>와 ID로 스타일을 지정합니다.</p>
+        <p class="ex01">다음 예제로 이어집니다.</p> 
+        
+        <h3>< 콘텐츠 위치 지정 방법 ></h3>
+        
+        <div>
+            <div class = "ex03_1"></div>
+            <div class = "ex03_2"></div>
+            <div class = "ex03_3"></div>
+        </div>
+        <br>
+
+        <h3> < 레이아웃 설정하기 (z-index)></h3>
+        <br><br><br>
+        <img src = "steve.jpg" id="ex04_1">
+        <img src = "steve.jpg" id="ex04_2">
+        <img src = "steve.jpg" id="ex04_3">
+        <br><br><br>
+
+        <img src = "steve.jpg" id="ex05_1" width="72" height="40">
+        <img src = "steve.jpg" id="ex05_2" width="54" height="66">
+        <img src = "steve.jpg" id="ex05_3" width="54" height="66">
+        <p>float:left 와 float:right를 보여주고 있는 모습니다. 
+            float란 특정 콘텐츠를 주변 콘텐츠와 별도로 분리하여 배치하고 싶을 때 사용한다.</p>
+        <br>
+
+        <h3> < float 박스 설정하기 ></h3>
+        <p id = "ex06">표준안 개발에 대다수 웹브라우저 개발사가 참여하고 있고, 
+            그동안의 웹 기술의 발전을 많이 반영하여 ...(생략)....</p>   
+
+        <h3> < 움직임 설정하기 ></h3>
+        <br>
+        <h2>5.5 새로운 문서 표준 <span id="ex07">HTML5</span></h2> 
+        <img src="flower.png" id="ex07" width="54" height="66">
+        <p>현재 W3C에서 표준안 개발을 하고 있는 HTML5는 차세대 웹문서 ...(중략)... </p>
+
+        <br><br>
+        <p> <a href = "main.html">메인으로 돌아가기 >>>></a> <p></p>
+</body>
+
+</html>

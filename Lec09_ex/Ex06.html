@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <script type = "text/javascript">
+        function show_alert() {
+        alert("5 seconds passed...");
+        }
+
+        function show_message() {
+        document.write("3 seconds passed...");
+        }
+
+        function add(a,b){
+            return (a+b);
+        }
+
+        result1 = add(12, 34);
+        result2 = add(56, "78");
+
+        document.write("result1 = " + result1 + "<br/>");
+        document.write("result2 = " + result2 + "<br/>");
+
+        setTimeout(show_alert, 5000);
+        setTimeout(show_message, 3000);
+    </script>
+</html>
